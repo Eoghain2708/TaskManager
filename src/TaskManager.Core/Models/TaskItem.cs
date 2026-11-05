@@ -11,6 +11,8 @@ namespace TaskManager.Core.Models
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
         public bool Completed { get; set; }
+
+        public string Priority { get; set; } = "Normal";
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     }
