@@ -1,0 +1,32 @@
+name: TaskManager CI
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+
+    steps:
+    name: Checkout repository
+    uses: action/checkout@v4
+
+    name: Setup .NET
+    uses: action/setup-dotnet@v4
+    with:
+      dotnet-version: '10.0.x'
+
+    name: Restore dependencies
+    uses: dotnet restore
+
+    name: Build solution
+    uses: dotnet build --configuration Release --no-restore
+
+    name: Run tests
+    uses: dotnet test --configuration Release --no-build
