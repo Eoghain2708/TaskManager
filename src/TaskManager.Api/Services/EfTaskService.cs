@@ -85,6 +85,14 @@ namespace TaskManager.Api.Services
             return task;
         }
 
+        public async Task<TaskItem> ChangeDateAsync(Guid id, DateTime dateTime)
+        {
+            var task = await GetTaskByIdOrThrow(id);
+            task.CreatedAt = dateTime;
+            await _context.SaveChangesAsync();
+            return task;
+        }
+
         private async Task<TaskItem> GetTaskByIdOrThrow(Guid id)
         {
             var task = await _context.Tasks.FirstOrDefaultAsync(t => t.Id == id) ?? throw new KeyNotFoundException($"Task of id {id} cannot be found");

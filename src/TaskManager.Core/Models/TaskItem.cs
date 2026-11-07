@@ -14,6 +14,5 @@ namespace TaskManager.Core.Models
 
         public string Priority { get; set; } = "Normal";
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
     }
 }
