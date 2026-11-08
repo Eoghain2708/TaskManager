@@ -41,7 +41,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker buildx build --load --taskmanager-api --cache-from type=gha, scope=taskmanager-api --cache-to type=gha, mode=max, scope=taskmanager-api
+          docker buildx build --load --tag taskmanager-api --cache-from type=gha, scope=taskmanager-api --cache-to type=gha, mode=max, scope=taskmanager-api
 
       - name: Set image name
         run: |
