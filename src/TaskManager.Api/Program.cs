@@ -33,7 +33,7 @@ if (app.Environment.IsDevelopment())
           "TaskManager API v1");
   });
 }
-
+Console.WriteLine("hello");
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();
