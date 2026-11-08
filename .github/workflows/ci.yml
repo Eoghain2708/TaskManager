@@ -36,8 +36,12 @@ jobs:
       - name: Run tests
         run: dotnet test --configuration Release --no-build
 
+      - name: Set up Docker buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Build Docker image
-        run: docker build -t taskmanager-api .
+        run: |
+          docker buildx build --load --taskmanager-api --cache-from type=gha, scope=taskmanager-api --cache-to type=gha, mode=max, scope=taskmanager-api
 
       - name: Set image name
         run: |
